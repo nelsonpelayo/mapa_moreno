@@ -103,59 +103,71 @@ padding: 2px !important;
 }
 
 /* ============================= */
-/* AJUSTES AUTOMÁTICOS CELULAR */
+/* AJUSTES SOLO PARA MOVIL */
 /* ============================= */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px){
 
-#titulo-mapa {
-font-size: 18px;
-top: 10px;
-width: 90%;
-line-height: 1.2;
+/* LOGO MAS CHICO */
+
+#logo-institucional{
+height:30px;
+top:8px;
+right:5px;
 }
 
-#logo-institucional {
-height: 40px;
-top: 5px;
-right: 5px;
+/* TITULO MAS ANGOSTO */
+
+#titulo-mapa{
+font-size:16px;
+top:8px;
+width:75%;
+line-height:1.2;
 }
 
-#pie-direccion {
-font-size: 12px;
-bottom: 10px;
-width: 90%;
+/* TEXTO INFERIOR MAS ARRIBA */
+
+#pie-direccion{
+font-size:11px;
+bottom:35px;
+width:90%;
 }
 
-.layer-switcher {
-margin-top: 70px !important;
-font-size: 12px;
-max-height: 60vh;
-overflow-y: auto;
+/* REFERENCIAS */
+
+.layer-switcher{
+margin-top:60px !important;
+font-size:12px;
+max-height:60vh;
+overflow-y:auto;
 }
 
-.layer-switcher ul::before {
-font-size: 16px;
+/* MAPA LEVEMENTE A LA DERECHA */
+
+#map{
+margin-left:5%;
 }
 
-.ol-control button {
-width: 34px;
-height: 34px;
-font-size: 16px;
+/* BOTONES MAS GRANDES PARA TOCAR */
+
+.ol-control button{
+width:34px;
+height:34px;
+font-size:16px;
 }
 
 }
 
 /* CELULARES MUY CHICOS */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width:480px){
 
-#titulo-mapa {
-font-size: 15px;
+#titulo-mapa{
+font-size:14px;
 }
 
-#pie-direccion {
-font-size: 10px;
+#pie-direccion{
+font-size:10px;
 }
 
 }
