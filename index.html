@@ -221,12 +221,12 @@ var view = map.getView();
 
 /* 1️⃣ alejar un poco más el zoom (~15%) */
 
-view.setZoom(view.getZoom() - 1.2);
+view.setZoom(view.getZoom() - 1.1);
 
 /* 2️⃣ mover centro un poco más a la derecha */
 
 var center = view.getCenter();
-center[0] = center[0] + 1000;
+center[0] = center[0] + 1300;
 view.setCenter(center);
 
 }
@@ -238,6 +238,7 @@ window.addEventListener("load", ajustarMapaMovil);
 </script>
 </body>
 </html>
+
 
 
 
