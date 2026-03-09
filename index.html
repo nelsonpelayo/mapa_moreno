@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -95,10 +94,18 @@ padding-bottom:8px;
 }
 
 /* ============================= */
-/* AJUSTES SOLO PARA MOVIL */
+/* MOVIL */
 /* ============================= */
 
 @media screen and (max-width:768px){
+
+/* BARRA SUPERIOR */
+
+#titulo-mapa{
+font-size:14px;
+top:6px;
+width:70%;
+}
 
 #logo-institucional{
 height:20px;
@@ -106,17 +113,15 @@ top:6px;
 right:6px;
 }
 
-#titulo-mapa{
-font-size:15px;
-width:65%;
-top:6px;
-}
+/* TEXTO INFERIOR */
 
 #pie-direccion{
 font-size:11px;
 bottom:40px;
 width:90%;
 }
+
+/* MENU CAPAS */
 
 .layer-switcher{
 left:6px!important;
@@ -126,6 +131,8 @@ margin-top:70px!important;
 .layer-switcher button{
 font-size:20px;
 }
+
+/* BOTONES */
 
 .ol-control button{
 width:34px;
@@ -188,7 +195,7 @@ Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana
 
 <script>
 
-/* ALEJAR MAPA ~15% SOLO EN MOVIL */
+/* ALEJAR MAPA EN MOVIL */
 
 function ajustarMapaMovil(){
 if(window.innerWidth < 768){
