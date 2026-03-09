@@ -16,7 +16,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
-        /* --- ESTILOS PARA PC --- */
+        /* --- ESTILOS PC --- */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -57,47 +57,37 @@
             margin-top: 130px !important;
         }
 
-        /* --- AJUSTES PARA MÓVIL --- */
+        /* --- AJUSTES MÓVIL --- */
         @media (max-width: 600px) {
             #logo-institucional {
                 height: 20px !important; 
                 top: 10px;
                 right: 10px;
             }
-
             #titulo-mapa {
                 font-size: 12px;
                 top: 40px;
                 width: 85%;
             }
-
             #pie-direccion {
                 font-size: 9px;
                 bottom: 10px; 
-                color: #888888;
             }
-
             .layer-switcher {
-                margin-top: 90px !important;
+                margin-top: 100px !important;
             }
-        }
-
-        /* ESTILO DEL POPUP PARA QUE NO ROMPA EL DISEÑO */
-        .ol-popup {
-            position: absolute;
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #cccccc;
-            bottom: 12px;
-            left: -50px;
-            min-width: 280px;
-            display: none; /* Se oculta hasta que se haga clic */
         }
         </style>
     </head>
 
     <body>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+
         <img id="logo-institucional" src="2026logo.png">
 
         <div id="titulo-mapa">
@@ -107,13 +97,6 @@
         
         <div id="pie-direccion">Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana</div>
 
-        <div id="map">
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
-            </div>
-        </div>
-
         <script src="resources/qgis2web_expressions.js"></script>
         <script src="./resources/functions.js"></script>
         <script src="./resources/ol.js"></script>
@@ -122,14 +105,13 @@
         <script src="./resources/qgis2web.js"></script>
 
         <script>
-            // Ajuste de centrado real para móvil
+            // Ajuste de centrado para móvil (Solo si es pantalla chica)
             if (window.innerWidth < 600 && typeof map !== 'undefined') {
                 setTimeout(function() {
-                    var view = map.getView();
-                    view.setZoom(13.8);
-                    // Coordenada corregida para centrar Cuartel V en el móvil
-                    view.setCenter([-6544000.00, -4104600.00]);
-                }, 1200);
+                    map.getView().setZoom(13.8);
+                    // Coordenada para centrar los barrios en el celular (hacia la DERECHA)
+                    map.getView().setCenter([-6541500.00, -4104600.00]);
+                }, 1500);
             }
         </script>
     </body>
