@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Cuartel V - Zona III</title>
 
 <link rel="stylesheet" href="./resources/ol.css">
@@ -31,8 +33,9 @@ top:20px;
 left:50%;
 transform:translateX(-50%);
 z-index:1000;
-font-family:Arial;
+font-family:Arial, Gadget, sans-serif;
 font-size:32px;
+color:#000;
 text-align:center;
 text-shadow:2px 2px 5px rgba(255,255,255,0.8);
 pointer-events:none;
@@ -44,8 +47,8 @@ pointer-events:none;
 position:absolute;
 top:10px;
 right:10px;
-height:60px;
 z-index:1002;
+height:60px;
 pointer-events:none;
 }
 
@@ -56,50 +59,78 @@ position:absolute;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
-font-family:Arial;
+z-index:1000;
+font-family:Arial, sans-serif;
 font-size:20px;
 color:#888;
 text-align:center;
+text-shadow:1px 1px 2px rgba(255,255,255,0.6);
 pointer-events:none;
 }
 
-/* ================= */
-/* AJUSTES MOVIL */
-/* ================= */
+/* CONTROLES */
+
+.ol-control{
+background-color:rgba(255,255,255,.4)!important;
+padding:2px!important;
+}
+
+/* LEYENDA */
+
+.layer-switcher{
+margin-top:90px!important;
+left:10px!important;
+}
+
+.layer-switcher ul::before{
+content:"Referencias";
+display:block;
+font-family:Arial;
+font-weight:bold;
+font-size:25px;
+color:#333;
+text-align:center;
+border-bottom:2px solid #eee;
+padding-bottom:8px;
+}
+
+/* ============================= */
+/* AJUSTES SOLO PARA MOVIL */
+/* ============================= */
 
 @media screen and (max-width:768px){
 
-/* LOGO MAS CHICO */
-
 #logo-institucional{
-height:18px !important;
-right:5px !important;
-top:6px !important;
+height:20px;
+top:6px;
+right:6px;
 }
 
-/* TITULO MAS ANGOSTO PARA NO CHOCAR */
-
 #titulo-mapa{
-font-size:14px;
-width:70%;
-left:40%;
-transform:translateX(-40%);
+font-size:15px;
+width:65%;
 top:6px;
 }
 
-/* PIE MAS ARRIBA */
-
 #pie-direccion{
 font-size:11px;
-bottom:35px;
+bottom:40px;
 width:90%;
 }
 
-/* BOTON CAPAS MAS A LA IZQUIERDA */
-
 .layer-switcher{
-left:5px !important;
-margin-top:70px !important;
+left:6px!important;
+margin-top:70px!important;
+}
+
+.layer-switcher button{
+font-size:20px;
+}
+
+.ol-control button{
+width:34px;
+height:34px;
+font-size:16px;
 }
 
 }
@@ -109,7 +140,7 @@ margin-top:70px !important;
 
 <body>
 
-<img id="logo-institucional" src="2026logo.png">
+<img id="logo-institucional" src="2026logo.png" alt="Logo Moreno IDUAR">
 
 <div id="titulo-mapa">
 <strong>
@@ -157,20 +188,30 @@ Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana
 
 <script>
 
-/* ALEJAR MAPA EN MOVIL */
+/* ALEJAR MAPA ~15% SOLO EN MOVIL */
 
 function ajustarMapaMovil(){
 if(window.innerWidth < 768){
 setTimeout(function(){
 var view = map.getView();
-view.setZoom(view.getZoom()-1);
+var zoom = view.getZoom();
+view.setZoom(zoom - 1);
 map.updateSize();
 },400);
 }
 }
 
-window.onload=ajustarMapaMovil;
-window.onresize=ajustarMapaMovil;
+window.onload = ajustarMapaMovil;
+window.onresize = ajustarMapaMovil;
+
+/* ICONO HAMBURGUESA */
+
+document.addEventListener("DOMContentLoaded", function(){
+var btn = document.querySelector(".layer-switcher button");
+if(btn){
+btn.innerHTML="☰";
+}
+});
 
 </script>
 
