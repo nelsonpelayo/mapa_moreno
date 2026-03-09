@@ -53,7 +53,7 @@
             width: 90%;
         }
 
-        /* PC: Ajustado para que no choque con el logo */
+        /* PC: Separación para que no choque con el logo */
         .layer-switcher {
             margin-top: 135px !important;
         }
@@ -130,22 +130,15 @@
         <script src="./resources/qgis2web.js"></script>
 
         <script>
+            // Ajuste de vista solo para móvil sin recrear controles
             var isSmallScreen = window.innerWidth < 600;
-            
-            setTimeout(function() {
-                if (typeof map !== 'undefined') {
-                    // Mantenemos las Referencias activas
-                    var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Referencias"});
-                    map.addControl(layerSwitcher);
-
-                    if (isSmallScreen) {
-                        map.getView().setZoom(13.8); 
-                        // CENTRADO MÓVIL: Cambiamos a -6541500 para mover el mapa a la DERECHA
-                        map.getView().setCenter([-6541500.00, -4104600.00]);
-                    }
-                }
-            }, 800);
+            if (isSmallScreen && typeof map !== 'undefined') {
+                setTimeout(function() {
+                    map.getView().setZoom(13.8); 
+                    // Movemos a la DERECHA para centrar
+                    map.getView().setCenter([-6541000.00, -4104600.00]);
+                }, 500);
+            }
         </script>
     </body>
 </html>
-
