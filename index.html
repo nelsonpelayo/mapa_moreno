@@ -16,7 +16,6 @@
         #titulo-mapa { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 2000; font-family: sans-serif; font-size: 24px; text-align: center; width: 80%; pointer-events: none; text-shadow: 2px 2px 4px white; color: black; }
         #logo-institucional { position: absolute; top: 10px; right: 10px; z-index: 2001; height: 50px; width: auto; }
         #pie-direccion { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 2000; font-family: sans-serif; font-size: 14px; color: #888; text-align: center; width: 90%; }
-        
         .layer-switcher { margin-top: 110px !important; }
 
         @media (max-width: 600px) {
@@ -53,6 +52,13 @@
         <script src="layers/CursodeAgua_7.js"></script>
         <script src="layers/CallesNombradasenHonoraLosDesaparecidos_8.js"></script>
 
+        <script src="styles/Reserva_Equipamientos_3_style.js"></script>
+        <script src="styles/LocalidadesMoreno_4_style.js"></script>
+        <script src="styles/BarriosPopulares_5_style.js"></script>
+        <script src="styles/CallesMloreno_6_style.js"></script>
+        <script src="styles/CursodeAgua_7_style.js"></script>
+        <script src="styles/CallesNombradasenHonoraLosDesaparecidos_8_style.js"></script>
+
         <script src="layers/layers.js"></script>
         <script src="resources/qgis2web.js"></script>
 
@@ -61,7 +67,6 @@
                 if (typeof map !== 'undefined' && window.innerWidth < 600) {
                     setTimeout(function() {
                         map.getView().setZoom(13.8);
-                        // Coordenada ajustada para centrar hacia la derecha en móvil
                         map.getView().setCenter([-6541500.00, -4104600.00]);
                     }, 500);
                 }
