@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
         <title>Mapa Cuartel V</title>
 
         <link rel="stylesheet" href="./resources/ol.css">
@@ -14,30 +12,15 @@
         <link rel="stylesheet" href="./resources/qgis2web.css">
         
         <style>
-        html, body, #map {
-            width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
-        }
-        #titulo-mapa {
-            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-            z-index: 1000; font-family: sans-serif; font-size: 24px; text-align: center;
-            width: 80%; pointer-events: none; text-shadow: 2px 2px 4px white;
-        }
-        #logo-institucional {
-            position: absolute; top: 10px; right: 10px; z-index: 1001;
-            height: 50px; width: auto;
-        }
-        #pie-direccion {
-            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-            z-index: 1000; font-family: sans-serif; font-size: 14px; color: #888;
-            text-align: center; width: 90%;
-        }
-        /* Ajuste para que las referencias no tapen el logo en PC */
+        html, body, #map { width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff; }
+        #titulo-mapa { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 2000; font-family: sans-serif; font-size: 24px; text-align: center; width: 80%; pointer-events: none; text-shadow: 2px 2px 4px white; color: black; }
+        #logo-institucional { position: absolute; top: 10px; right: 10px; z-index: 2001; height: 50px; width: auto; }
+        #pie-direccion { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 2000; font-family: sans-serif; font-size: 14px; color: #888; text-align: center; width: 90%; }
         .layer-switcher { margin-top: 100px !important; }
-
         @media (max-width: 600px) {
-            #titulo-mapa { font-size: 14px; top: 50px; }
-            #logo-institucional { height: 30px; }
-            .layer-switcher { margin-top: 120px !important; }
+            #titulo-mapa { font-size: 14px; top: 45px; }
+            #logo-institucional { height: 25px; }
+            .layer-switcher { margin-top: 85px !important; }
         }
         </style>
     </head>
@@ -59,21 +42,24 @@
         <script src="resources/functions.js"></script>
         <script src="resources/ol.js"></script>
         <script src="resources/ol-layerswitcher.js"></script>
+        <script src="resources/Autolinker.min.js"></script> <script src="layers/Reserva_Equipamientos_3.js"></script> <script src="layers/LocalidadesMoreno_4.js"></script>
+        <script src="layers/BarriosPopulares_5.js"></script>
+        <script src="layers/CallesMloreno_6.js"></script>
+        <script src="layers/CursodeAgua_7.js"></script>
+        <script src="layers/CallesNombradasenHonoraLosDesaparecidos_8.js"></script>
+
         <script src="layers/layers.js"></script>
         <script src="resources/qgis2web.js"></script>
-        <script src="resources/Autolinker.min.js"></script>
 
         <script>
-            // Solo ejecutamos si el mapa cargó correctamente
-            window.onload = function() {
-                if (window.innerWidth < 600 && typeof map !== 'undefined') {
+            window.addEventListener('load', function() {
+                if (typeof map !== 'undefined' && window.innerWidth < 600) {
                     setTimeout(function() {
                         map.getView().setZoom(13.8);
-                        // Coordenada para centrar barrios populares en móvil
-                        map.getView().setCenter([-6542000.00, -4104600.00]);
-                    }, 1000);
+                        map.getView().setCenter([-6541500.00, -4104600.00]);
+                    }, 500);
                 }
-            };
+            });
         </script>
     </body>
 </html>
