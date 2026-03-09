@@ -4,19 +4,20 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <title>Cuartel V - Zona III</title>
-
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="./resources/ol.css">
         <link rel="stylesheet" href="resources/fontawesome-all.min.css">
         <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
         <link rel="stylesheet" href="./resources/qgis2web.css">
-        
         <style>
         html, body, #map {
-            width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
-
-        /* --- ESTILOS PC --- */
+        /* ESTILOS SUPERPUESTOS */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -24,13 +25,13 @@
             transform: translateX(-50%);
             z-index: 1000;
             font-family: 'Arial', sans-serif;
-            font-size: 26px; 
+            font-size: 26px;
             color: #000;
             text-align: center;
             width: 70%;
             pointer-events: none;
+            text-shadow: 0px 0px 4px white;
         }
-
         #logo-institucional {
             position: absolute;
             top: 10px;
@@ -38,8 +39,8 @@
             z-index: 1002;
             height: 55px;
             width: auto;
+            pointer-events: none;
         }
-
         #pie-direccion {
             position: absolute;
             bottom: 15px;
@@ -51,35 +52,22 @@
             color: #888888;
             text-align: center;
             width: 90%;
+            pointer-events: none;
         }
-
+        /* Ajuste de Referencias para PC */
         .layer-switcher {
-            margin-top: 130px !important;
+            margin-top: 110px !important;
         }
-
-        /* --- AJUSTES MÓVIL --- */
+        /* AJUSTES MÓVIL */
         @media (max-width: 600px) {
-            #logo-institucional {
-                height: 20px !important; 
-                top: 10px;
-                right: 10px;
-            }
-            #titulo-mapa {
-                font-size: 12px;
-                top: 40px;
-                width: 85%;
-            }
-            #pie-direccion {
-                font-size: 9px;
-                bottom: 10px; 
-            }
-            .layer-switcher {
-                margin-top: 100px !important;
-            }
+            #logo-institucional { height: 20px !important; top: 10px; right: 10px; }
+            #titulo-mapa { font-size: 12px; top: 40px; width: 85%; }
+            #pie-direccion { font-size: 9px; bottom: 10px; }
+            .layer-switcher { margin-top: 90px !important; }
         }
         </style>
+        <title>Mapa Cuartel V</title>
     </head>
-
     <body>
         <div id="map">
             <div id="popup" class="ol-popup">
@@ -89,29 +77,29 @@
         </div>
 
         <img id="logo-institucional" src="2026logo.png">
-
         <div id="titulo-mapa">
             <strong>Calles Nombradas en Honor a los Desaparecidos<br>
             Cuartel V - Zona III</strong>
         </div>
-        
         <div id="pie-direccion">Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana</div>
 
         <script src="resources/qgis2web_expressions.js"></script>
-        <script src="./resources/functions.js"></script>
-        <script src="./resources/ol.js"></script>
-        <script src="./resources/ol-layerswitcher.js"></script>
-        <script src="./layers/layers.js"></script> 
-        <script src="./resources/qgis2web.js"></script>
+        <script src="resources/functions.js"></script>
+        <script src="resources/ol.js"></script>
+        <script src="resources/ol-layerswitcher.js"></script>
+        <script src="layers/layers.js"></script>
+        <script src="resources/qgis2web.js"></script>
+        <script src="resources/Autolinker.min.js"></script>
 
         <script>
-            // Ajuste de centrado para móvil (Solo si es pantalla chica)
-            if (window.innerWidth < 600 && typeof map !== 'undefined') {
+            // Solo ajuste de cámara para el móvil
+            var isSmallScreen = window.innerWidth < 600;
+            if (isSmallScreen && typeof map !== 'undefined') {
                 setTimeout(function() {
                     map.getView().setZoom(13.8);
-                    // Coordenada para centrar los barrios en el celular (hacia la DERECHA)
-                    map.getView().setCenter([-6541500.00, -4104600.00]);
-                }, 1500);
+                    // Centramos los barrios moviendo a la derecha
+                    map.getView().setCenter([-6541000.00, -4104600.00]);
+                }, 1000);
             }
         </script>
     </body>
