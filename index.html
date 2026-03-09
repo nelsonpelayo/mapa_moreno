@@ -53,7 +53,7 @@
             width: 90%;
         }
 
-        /* PC: Ajustado a 135px para que no choque pero no quede tan abajo */
+        /* PC: Ajustado para que no choque con el logo */
         .layer-switcher {
             margin-top: 135px !important;
         }
@@ -75,7 +75,6 @@
             #pie-direccion {
                 font-size: 9px;
                 bottom: 8px; 
-                color: #888888;
             }
 
             .layer-switcher {
@@ -132,11 +131,18 @@
 
         <script>
             var isSmallScreen = window.innerWidth < 600;
+            
             setTimeout(function() {
-                if (isSmallScreen && typeof map !== 'undefined') {
-                    map.getView().setZoom(13.8); 
-                    // CENTRADO MÓVIL: Ajustado para que quede al medio
-                    map.getView().setCenter([-6545000.00, -4104600.00]);
+                if (typeof map !== 'undefined') {
+                    // Mantenemos las Referencias activas
+                    var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Referencias"});
+                    map.addControl(layerSwitcher);
+
+                    if (isSmallScreen) {
+                        map.getView().setZoom(13.8); 
+                        // CENTRADO MÓVIL: Cambiamos a -6541500 para mover el mapa a la DERECHA
+                        map.getView().setCenter([-6541500.00, -4104600.00]);
+                    }
                 }
             }, 800);
         </script>
