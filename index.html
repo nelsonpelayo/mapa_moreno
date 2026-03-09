@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Cuartel V - Zona III</title>
@@ -24,6 +24,8 @@ margin: 0;
 background-color: #ffffff;
 }
 
+/* TITULO */
+
 #titulo-mapa {
 position: absolute;
 top: 20px;
@@ -38,6 +40,8 @@ text-shadow: 2px 2px 5px rgba(255,255,255,0.8);
 pointer-events: none;
 }
 
+/* LOGO */
+
 #logo-institucional {
 position: absolute;
 top: 10px;
@@ -48,7 +52,7 @@ width: auto;
 pointer-events: none;
 }
 
-/* --- LEYENDA Y REFERENCIAS --- */
+/* LEYENDA */
 
 .layer-switcher {
 margin-top: 90px !important;
@@ -75,6 +79,8 @@ padding: 0 5px 10px 5px;
 margin-bottom: 0px;
 }
 
+/* PIE */
+
 #pie-direccion {
 position: absolute;
 bottom: 20px;
@@ -89,21 +95,24 @@ text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
 pointer-events: none;
 }
 
+/* CONTROLES MAPA */
+
 .ol-control {
 background-color: rgba(255,255,255,.4) !important;
 padding: 2px !important;
 }
 
 /* ============================= */
-/* AJUSTES AUTOMÁTICOS CELULAR  */
+/* AJUSTES AUTOMÁTICOS CELULAR */
 /* ============================= */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
 #titulo-mapa {
 font-size: 18px;
 top: 10px;
 width: 90%;
+line-height: 1.2;
 }
 
 #logo-institucional {
@@ -121,10 +130,32 @@ width: 90%;
 .layer-switcher {
 margin-top: 70px !important;
 font-size: 12px;
+max-height: 60vh;
+overflow-y: auto;
 }
 
 .layer-switcher ul::before {
 font-size: 16px;
+}
+
+.ol-control button {
+width: 34px;
+height: 34px;
+font-size: 16px;
+}
+
+}
+
+/* CELULARES MUY CHICOS */
+
+@media screen and (max-width: 480px) {
+
+#titulo-mapa {
+font-size: 15px;
+}
+
+#pie-direccion {
+font-size: 10px;
 }
 
 }
