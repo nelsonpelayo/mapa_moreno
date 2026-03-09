@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -95,7 +96,7 @@ text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
 pointer-events: none;
 }
 
-/* CONTROLES MAPA */
+/* CONTROLES */
 
 .ol-control {
 background-color: rgba(255,255,255,.4) !important;
@@ -111,17 +112,19 @@ padding: 2px !important;
 /* LOGO MAS CHICO */
 
 #logo-institucional{
-height:30px;
-top:8px;
-right:5px;
+height:26px;
+top:6px;
+right:6px;
 }
 
-/* TITULO MAS ANGOSTO */
+/* TITULO MAS ANGOSTO PARA NO CHOCAR */
 
 #titulo-mapa{
-font-size:16px;
-top:8px;
-width:75%;
+font-size:15px;
+top:6px;
+width:65%;
+left:40%;
+transform:translateX(-40%);
 line-height:1.2;
 }
 
@@ -129,45 +132,33 @@ line-height:1.2;
 
 #pie-direccion{
 font-size:11px;
-bottom:35px;
+bottom:40px;
 width:90%;
 }
 
-/* REFERENCIAS */
+/* MAPA MAS ALEJADO Y CENTRADO */
+
+#map{
+transform:scale(0.85);
+transform-origin:center center;
+}
+
+/* BOTON DE CAPAS MAS A LA IZQUIERDA */
 
 .layer-switcher{
-margin-top:60px !important;
+left:5px !important;
+margin-top:55px !important;
 font-size:12px;
 max-height:60vh;
 overflow-y:auto;
 }
 
-/* MAPA LEVEMENTE A LA DERECHA */
-
-#map{
-margin-left:5%;
-}
-
-/* BOTONES MAS GRANDES PARA TOCAR */
+/* BOTONES MAS COMODOS */
 
 .ol-control button{
 width:34px;
 height:34px;
 font-size:16px;
-}
-
-}
-
-/* CELULARES MUY CHICOS */
-
-@media screen and (max-width:480px){
-
-#titulo-mapa{
-font-size:14px;
-}
-
-#pie-direccion{
-font-size:10px;
 }
 
 }
@@ -225,3 +216,6 @@ Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana
 
 </body>
 </html>
+
+
+
