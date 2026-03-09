@@ -19,6 +19,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
+        /* ESTILO PARA PC (32px como vos querés) */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -87,17 +88,17 @@
 
         .ol-control { background-color: rgba(255,255,255,.4) !important; padding: 2px !important; } 
 
-        /* --- AJUSTE EXCLUSIVO PARA MÓVILES --- */
+        /* --- AJUSTE AUTOMÁTICO PARA EL MÓVIL --- */
         @media (max-width: 600px) {
             #titulo-mapa {
-                font-size: 16px !important;
+                font-size: 16px !important; /* Baja a 16px solo en el celu */
                 top: 10px !important;
             }
             #logo-institucional {
-                height: 35px !important;
+                height: 35px !important; /* Achica el logo en el celu */
             }
             #pie-direccion {
-                font-size: 11px !important;
+                font-size: 11px !important; /* Achica el pie de página */
                 bottom: 10px !important;
             }
             .layer-switcher {
@@ -152,5 +153,4 @@
         <script src="./resources/qgis2web.js"></script>                  
     </body>
 </html>
-
 
