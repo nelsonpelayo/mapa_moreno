@@ -19,7 +19,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
-        /* --- ESTILOS PC (Se mantienen intactos) --- */
+        /* --- ESTILOS PC (INTACTOS PARA QUE NO CHOQUEN) --- */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -59,19 +59,24 @@
             pointer-events: none;
         }
 
+        /* Mantenemos la leyenda abajo en PC para que no choque con el logo */
+        .layer-switcher {
+            margin-top: 90px !important;
+        }
+
         /* --- AJUSTES EXCLUSIVOS PARA MÓVIL --- */
         @media (max-width: 600px) {
             #logo-institucional {
                 height: 35px; 
-                top: 15px;    /* Más abajo como pediste */
-                right: 10px;  /* A la derecha */
+                top: 15px;    
+                right: 10px;  
                 left: auto;
                 transform: none;
             }
 
             #titulo-mapa {
                 font-size: 13px;
-                top: 55px;    /* Bajado para no chocar con el logo */
+                top: 55px;    
                 width: 90%;
                 background-color: rgba(255,255,255,0.6);
                 padding: 5px;
@@ -80,16 +85,17 @@
 
             #pie-direccion {
                 font-size: 10px;
-                color: #888888; /* Color gris */
-                bottom: 45px;   /* Más arriba para que no choque con nada */
+                color: #888888;
+                bottom: 45px;   
                 padding: 5px;
                 width: 100%;
                 background-color: rgba(255,255,255,0.5);
                 font-weight: bold;
             }
 
+            /* Bajamos la leyenda MUCHO MÁS en el móvil para que no pise el logo */
             .layer-switcher {
-                margin-top: 140px !important;
+                margin-top: 160px !important;
             }
         }
 
@@ -154,8 +160,8 @@
             var isSmallScreen = window.innerWidth < 600;
             setTimeout(function() {
                 if (isSmallScreen && typeof map !== 'undefined') {
-                    // Zoom 14.2 para que esté un 15% más cerca
-                    map.getView().setZoom(14.2); 
+                    // Bajamos de 14.2 a 13.8 para alejarlo ese 5% aproximado
+                    map.getView().setZoom(13.8); 
                     map.getView().setCenter([-6545375.42, -4104600.00]);
                 }
             }, 600);
