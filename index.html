@@ -69,7 +69,7 @@ pointer-events:none;
 
 @media screen and (max-width:768px){
 
-/* LOGO MAS CHICO */
+/* LOGO */
 
 #logo-institucional{
 height:18px !important;
@@ -77,24 +77,33 @@ right:5px !important;
 top:6px !important;
 }
 
-/* TITULO MAS ANGOSTO PARA NO CHOCAR */
+/* TITULO (mas a la izquierda) */
 
 #titulo-mapa{
 font-size:14px;
 width:70%;
-left:40%;
-transform:translateX(-40%);
+left:32%;
+transform:translateX(-32%);
 top:6px;
 }
 
-/* PIE MAS ARRIBA */
+/* PIE (volver a mostrarlo) */
 
 #pie-direccion{
 font-size:11px;
 bottom:35px;
 width:90%;
+z-index:1000;
 }
 
+/* BOTON CAPAS */
+
+.layer-switcher{
+left:5px !important;
+margin-top:70px !important;
+}
+
+}
 /* BOTON CAPAS MAS A LA IZQUIERDA */
 
 .layer-switcher{
@@ -176,3 +185,4 @@ window.onresize=ajustarMapaMovil;
 
 </body>
 </html>
+
