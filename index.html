@@ -1,11 +1,10 @@
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Cuartel V - Zona III</title>
 
 <link rel="stylesheet" href="./resources/ol.css">
@@ -32,9 +31,8 @@ top:20px;
 left:50%;
 transform:translateX(-50%);
 z-index:1000;
-font-family:Arial, Gadget, sans-serif;
+font-family:Arial;
 font-size:32px;
-color:#000;
 text-align:center;
 text-shadow:2px 2px 5px rgba(255,255,255,0.8);
 pointer-events:none;
@@ -46,8 +44,8 @@ pointer-events:none;
 position:absolute;
 top:10px;
 right:10px;
-z-index:1002;
 height:60px;
+z-index:1002;
 pointer-events:none;
 }
 
@@ -58,86 +56,50 @@ position:absolute;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
-z-index:1000;
-font-family:Arial, sans-serif;
+font-family:Arial;
 font-size:20px;
 color:#888;
 text-align:center;
-text-shadow:1px 1px 2px rgba(255,255,255,0.6);
 pointer-events:none;
 }
 
-/* CONTROLES */
-
-.ol-control{
-background-color:rgba(255,255,255,.4)!important;
-padding:2px!important;
-}
-
-/* LEYENDA */
-
-.layer-switcher{
-margin-top:90px!important;
-left:10px!important;
-}
-
-.layer-switcher ul::before{
-content:"Referencias";
-display:block;
-font-family:Arial;
-font-weight:bold;
-font-size:25px;
-color:#333;
-text-align:center;
-border-bottom:2px solid #eee;
-padding-bottom:8px;
-}
-
-/* ============================= */
-/* MOVIL */
-/* ============================= */
+/* ================= */
+/* AJUSTES MOVIL */
+/* ================= */
 
 @media screen and (max-width:768px){
 
-/* BARRA SUPERIOR */
+/* LOGO MAS CHICO */
+
+#logo-institucional{
+height:18px !important;
+right:5px !important;
+top:6px !important;
+}
+
+/* TITULO MAS ANGOSTO PARA NO CHOCAR */
 
 #titulo-mapa{
 font-size:14px;
-top:6px;
 width:70%;
-}
-
-#logo-institucional{
-height:20px;
+left:40%;
+transform:translateX(-40%);
 top:6px;
-right:6px;
 }
 
-/* TEXTO INFERIOR */
+/* PIE MAS ARRIBA */
 
 #pie-direccion{
 font-size:11px;
-bottom:40px;
+bottom:35px;
 width:90%;
 }
 
-/* MENU CAPAS */
+/* BOTON CAPAS MAS A LA IZQUIERDA */
 
 .layer-switcher{
-left:6px!important;
-margin-top:70px!important;
-}
-
-.layer-switcher button{
-font-size:20px;
-}
-
-/* BOTONES */
-
-.ol-control button{
-width:34px;
-height:34px;
-font-size:16px;
+left:5px !important;
+margin-top:70px !important;
 }
 
 }
@@ -147,7 +109,7 @@ font-size:16px;
 
 <body>
 
-<img id="logo-institucional" src="2026logo.png" alt="Logo Moreno IDUAR">
+<img id="logo-institucional" src="2026logo.png">
 
 <div id="titulo-mapa">
 <strong>
@@ -201,24 +163,14 @@ function ajustarMapaMovil(){
 if(window.innerWidth < 768){
 setTimeout(function(){
 var view = map.getView();
-var zoom = view.getZoom();
-view.setZoom(zoom - 1);
+view.setZoom(view.getZoom()-1);
 map.updateSize();
 },400);
 }
 }
 
-window.onload = ajustarMapaMovil;
-window.onresize = ajustarMapaMovil;
-
-/* ICONO HAMBURGUESA */
-
-document.addEventListener("DOMContentLoaded", function(){
-var btn = document.querySelector(".layer-switcher button");
-if(btn){
-btn.innerHTML="☰";
-}
-});
+window.onload=ajustarMapaMovil;
+window.onresize=ajustarMapaMovil;
 
 </script>
 
