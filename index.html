@@ -16,7 +16,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
-        /* --- ESTILOS PC --- */
+        /* --- ESTILOS PARA PC --- */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -53,12 +53,12 @@
             width: 90%;
         }
 
-        /* PC: Bajamos las referencias para que no pisen el logo */
+        /* Espacio para que la leyenda no pise el logo en PC */
         .layer-switcher {
             margin-top: 130px !important;
         }
 
-        /* --- MÓVIL --- */
+        /* --- AJUSTES PARA MÓVIL --- */
         @media (max-width: 600px) {
             #logo-institucional {
                 height: 20px !important; 
@@ -74,11 +74,12 @@
 
             #pie-direccion {
                 font-size: 9px;
-                bottom: 8px; 
+                bottom: 10px; 
+                color: #888888;
             }
 
             .layer-switcher {
-                margin-top: 100px !important;
+                margin-top: 90px !important;
             }
         }
         </style>
@@ -119,13 +120,13 @@
         <script src="./resources/qgis2web.js"></script>
 
         <script>
-            // Ajuste manual de la vista para móvil
+            // Ajuste de centrado real hacia la DERECHA para móvil
             if (window.innerWidth < 600 && typeof map !== 'undefined') {
                 setTimeout(function() {
                     map.getView().setZoom(13.8);
-                    // MOVIMIENTO A LA DERECHA: Pasamos de -6540000 a -6535000
-                    map.getView().setCenter([-6535000.00, -4104600.00]);
-                }, 1000);
+                    // Coordenada ajustada para desplazar los barrios al centro del celu
+                    map.getView().setCenter([-6530000.00, -4104600.00]);
+                }, 1200);
             }
         </script>
     </body>
