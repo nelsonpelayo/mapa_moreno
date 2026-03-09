@@ -35,7 +35,7 @@ transform:translateX(-50%);
 z-index:1000;
 font-family:Arial, Gadget, sans-serif;
 font-size:32px;
-color:#000000;
+color:#000;
 text-align:center;
 text-shadow:2px 2px 5px rgba(255,255,255,0.8);
 pointer-events:none;
@@ -49,27 +49,7 @@ top:10px;
 right:10px;
 z-index:1002;
 height:60px;
-width:auto;
 pointer-events:none;
-}
-
-/* LEYENDA */
-
-.layer-switcher{
-margin-top:90px!important;
-left:10px!important;
-}
-
-.layer-switcher ul::before{
-content:"Referencias";
-display:block;
-font-family:Arial, sans-serif;
-font-weight:bold;
-font-size:25px;
-color:#333;
-text-align:center;
-border-bottom:2px solid #eee;
-padding-bottom:8px;
 }
 
 /* PIE */
@@ -82,7 +62,7 @@ transform:translateX(-50%);
 z-index:1000;
 font-family:Arial, sans-serif;
 font-size:20px;
-color:#888888;
+color:#888;
 text-align:center;
 text-shadow:1px 1px 2px rgba(255,255,255,0.6);
 pointer-events:none;
@@ -95,6 +75,25 @@ background-color:rgba(255,255,255,.4)!important;
 padding:2px!important;
 }
 
+/* LEYENDA */
+
+.layer-switcher{
+margin-top:90px!important;
+left:10px!important;
+}
+
+.layer-switcher ul::before{
+content:"Referencias";
+display:block;
+font-family:Arial;
+font-weight:bold;
+font-size:25px;
+color:#333;
+text-align:center;
+border-bottom:2px solid #eee;
+padding-bottom:8px;
+}
+
 /* ============================= */
 /* AJUSTES SOLO PARA MOVIL */
 /* ============================= */
@@ -102,7 +101,7 @@ padding:2px!important;
 @media screen and (max-width:768px){
 
 #logo-institucional{
-height:26px;
+height:20px;
 top:6px;
 right:6px;
 }
@@ -120,8 +119,12 @@ width:90%;
 }
 
 .layer-switcher{
-left:5px!important;
+left:6px!important;
 margin-top:70px!important;
+}
+
+.layer-switcher button{
+font-size:20px;
 }
 
 .ol-control button{
@@ -200,6 +203,15 @@ map.updateSize();
 
 window.onload = ajustarMapaMovil;
 window.onresize = ajustarMapaMovil;
+
+/* ICONO HAMBURGUESA */
+
+document.addEventListener("DOMContentLoaded", function(){
+var btn = document.querySelector(".layer-switcher button");
+if(btn){
+btn.innerHTML="☰";
+}
+});
 
 </script>
 
