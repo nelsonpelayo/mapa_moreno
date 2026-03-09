@@ -19,7 +19,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
-        /* --- ESTILOS PC (INTACTOS PARA QUE NO CHOQUEN) --- */
+        /* --- ESTILOS PC (Escritorio) --- */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -59,43 +59,40 @@
             pointer-events: none;
         }
 
-        /* Mantenemos la leyenda abajo en PC para que no choque con el logo */
+        /* Bajamos mucho la leyenda en PC para que no toque el logo */
         .layer-switcher {
-            margin-top: 90px !important;
+            margin-top: 200px !important;
         }
 
         /* --- AJUSTES EXCLUSIVOS PARA MÓVIL --- */
         @media (max-width: 600px) {
             #logo-institucional {
-                height: 35px; 
-                top: 15px;    
+                height: 25px; /* Logo más pequeño como pediste */
+                top: 10px;    
                 right: 10px;  
                 left: auto;
                 transform: none;
             }
 
             #titulo-mapa {
-                font-size: 13px;
-                top: 55px;    
+                font-size: 12px;
+                top: 45px;    
                 width: 90%;
                 background-color: rgba(255,255,255,0.6);
-                padding: 5px;
-                border-radius: 5px;
+                padding: 4px;
             }
 
             #pie-direccion {
                 font-size: 10px;
                 color: #888888;
-                bottom: 45px;   
-                padding: 5px;
+                bottom: 20px; /* Bajado para que no choque con el mapa */
+                padding: 3px;
                 width: 100%;
-                background-color: rgba(255,255,255,0.5);
-                font-weight: bold;
+                background-color: rgba(255,255,255,0.4);
             }
 
-            /* Bajamos la leyenda MUCHO MÁS en el móvil para que no pise el logo */
             .layer-switcher {
-                margin-top: 160px !important;
+                margin-top: 130px !important; /* Ajustado para el logo chico */
             }
         }
 
@@ -104,7 +101,7 @@
             display: block;
             font-family: 'Arial', sans-serif;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 20px;
             color: #333;
             text-align: center;
             border-bottom: 2px solid #eee;
@@ -160,9 +157,9 @@
             var isSmallScreen = window.innerWidth < 600;
             setTimeout(function() {
                 if (isSmallScreen && typeof map !== 'undefined') {
-                    // Bajamos de 14.2 a 13.8 para alejarlo ese 5% aproximado
                     map.getView().setZoom(13.8); 
-                    map.getView().setCenter([-6545375.42, -4104600.00]);
+                    // CENTRADO MÓVIL: Ajustamos la coordenada X para que no salga tan a la izquierda
+                    map.getView().setCenter([-6544000.00, -4104600.00]);
                 }
             }, 600);
         </script>
