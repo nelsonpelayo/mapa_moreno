@@ -16,7 +16,7 @@
             width: 100%; height: 100%; padding: 0; margin: 0; background-color: #ffffff;
         }
 
-        /* --- ESTILOS PC (ESCRITORIO) --- */
+        /* --- ESTILOS PC --- */
         #titulo-mapa {
             position: absolute;
             top: 20px;
@@ -53,15 +53,15 @@
             width: 90%;
         }
 
-        /* PC: Bajamos la leyenda para que no choque con el logo */
+        /* PC: Ajustado a 135px para que no choque pero no quede tan abajo */
         .layer-switcher {
-            margin-top: 180px !important;
+            margin-top: 135px !important;
         }
 
         /* --- AJUSTES EXCLUSIVOS PARA MÓVIL --- */
         @media (max-width: 600px) {
             #logo-institucional {
-                height: 22px !important; /* Logo bien pequeño */
+                height: 20px !important; 
                 top: 10px;
                 right: 10px;
             }
@@ -74,12 +74,10 @@
 
             #pie-direccion {
                 font-size: 9px;
-                bottom: 10px; /* Lo bajamos bien a la base */
+                bottom: 8px; 
                 color: #888888;
-                background: none;
             }
 
-            /* Móvil: Ajuste de leyenda */
             .layer-switcher {
                 margin-top: 110px !important;
             }
@@ -137,10 +135,11 @@
             setTimeout(function() {
                 if (isSmallScreen && typeof map !== 'undefined') {
                     map.getView().setZoom(13.8); 
-                    // CENTRADO: Movido a la derecha (-6543500) para centrar los barrios
-                    map.getView().setCenter([-6543500.00, -4104600.00]);
+                    // CENTRADO MÓVIL: Ajustado para que quede al medio
+                    map.getView().setCenter([-6545000.00, -4104600.00]);
                 }
             }, 800);
         </script>
     </body>
 </html>
+
