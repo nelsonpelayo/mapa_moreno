@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Cuartel V - Zona III</title>
@@ -51,6 +51,19 @@ z-index: 1002;
 height: 60px;
 width: auto;
 pointer-events: none;
+}
+
+/* FLECHA NORTE */
+
+#flecha-norte{
+position:absolute;
+top:90px;
+right:400px;
+width:80px;
+height:80px;
+z-index:999;
+pointer-events:none;
+transition:transform 0.2s linear;
 }
 
 /* LEYENDA */
@@ -109,15 +122,11 @@ padding: 2px !important;
 
 @media screen and (max-width:768px){
 
-/* LOGO MAS CHICO */
-
 #logo-institucional{
 height:15px;
 top:5px;
 right:5px;
 }
-
-/* TITULO MAS ANGOSTO PARA NO CHOCAR */
 
 #titulo-mapa{
 font-size:15px;
@@ -128,20 +137,11 @@ transform:translateX(-40%);
 line-height:1.2;
 }
 
-/* TEXTO INFERIOR MAS ARRIBA */
-
 #pie-direccion{
 font-size:11px;
 bottom:40px;
 width:90%;
 }
-
-/* MAPA MAS ALEJADO Y CENTRADO */
-
-/* MAPA MAS ALEJADO Y CENTRADO */
-/* eliminado porque generaba bordes blancos */
-
-/* BOTON DE CAPAS MAS A LA IZQUIERDA */
 
 .layer-switcher{
 left:5px !important;
@@ -151,13 +151,23 @@ max-height:60vh;
 overflow-y:auto;
 }
 
-/* BOTONES MAS COMODOS */
-
 .ol-control button{
 width:34px;
 height:34px;
 font-size:16px;
 }
+
+#flecha-norte{
+width:50px;
+height:50px;
+top:50px;
+right:50px;
+}
+
+.ol-rotate{
+display:none !important;
+}
+
 
 }
 
@@ -167,6 +177,7 @@ font-size:16px;
 <body>
 
 <img id="logo-institucional" src="2026logo.png" alt="Logo Moreno IDUAR">
+<img id="flecha-norte" src="flecha.svg" alt="Norte">
 
 <div id="titulo-mapa">
 <strong>
@@ -211,7 +222,26 @@ Dirección General de Proyectos de Hábitat, Vivienda e Integración Urbana
 <script src="./layers/layers.js"></script>
 <script src="./resources/Autolinker.min.js"></script>
 <script src="./resources/qgis2web.js"></script>
+
 <script>
+
+/* ROTAR FLECHA NORTE */
+
+window.addEventListener("load",function(){
+
+map.getView().on('change:rotation',function(){
+
+var rotation = map.getView().getRotation();
+var grados = rotation * (180 / Math.PI);
+
+document.getElementById("flecha-norte").style.transform =
+"rotate(" + (-grados) + "deg)";
+
+});
+
+});
+
+/* AJUSTE MOVIL ORIGINAL */
 
 function ajustarMapaMovil(){
 
@@ -219,11 +249,7 @@ if (window.innerWidth <= 768){
 
 var view = map.getView();
 
-/* 1️⃣ alejar un poco más el zoom (~15%) */
-
 view.setZoom(view.getZoom() - 0.7);
-
-/* 2️⃣ mover centro un poco más a la derecha */
 
 var center = view.getCenter();
 center[0] = center[0] - 500;
@@ -235,10 +261,44 @@ view.setCenter(center);
 
 window.addEventListener("load", ajustarMapaMovil);
 
+
+/* OCULTAR FLECHA NORTE CUANDO SE ABRE LA LEYENDA EN MOVIL */
+
+function controlarFlechaMovil(){
+
+if (window.innerWidth <= 768){
+
+var flecha = document.getElementById("flecha-norte");
+var boton = document.querySelector(".layer-switcher button");
+
+if(!boton) return;
+
+boton.addEventListener("click", function(){
+
+setTimeout(function(){
+
+var panel = document.querySelector(".layer-switcher");
+
+if(panel.classList.contains("shown")){
+flecha.style.display = "none";
+}else{
+flecha.style.display = "block";
+}
+
+},200);
+
+});
+
+}
+
+}
+
+window.addEventListener("load", controlarFlechaMovil);
+
 </script>
+
 </body>
 </html>
-
 
 
 
